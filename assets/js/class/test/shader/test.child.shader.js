@@ -11,6 +11,14 @@ export default {
         uniform vec2 eResolution;
 
         const float PI = ${Math.PI};
+        const float strength = 2.0;
+        const float minLinewidth = 0.0075;
+        const float maxLinewidth = 0.015;
+
+        float random(float t){
+            return (cos(t) + cos(t * 1.3 + 1.3) + cos(t * 1.4 + 1.4)) / 3.0;   
+        }
+
 
         // ${ShaderMethod.snoise3D()}
         
@@ -18,16 +26,27 @@ export default {
             vec2 coord = gl_FragCoord.xy;
             vec2 uv = coord / eResolution;
 
-            float dist1 = 1.0 - distance(uv.x, 1.0);
-            float dist2 = 1.0 - distance(uv.x, 0.0);
+            vec4 lines = vec4(vec3(1), 0.0);
 
-            float y = cos(uv.x * PI + time * 0.001) * dist1 * dist2 * 0.5 + 0.5;
-            float a1 = smoothstep(y - 0.01, y, uv.y);
-            float a2 = smoothstep(y + 0.01, y, uv.y);
+            for(float i = 0.0; i < 16.0; i += 1.0){
+                float rand = random(i) * 0.5 + 0.5;
+                float str = (random(i) * 0.5 + 0.5) * 2.0 + 0.5;
+                float offset = random(i) * 0.125;
+                float linewidth = mix(minLinewidth, maxLinewidth, rand);
 
-            vec4 color = vec4(vec3(1), a1 * a2);
+                float dist1 = 1.0 - distance(uv.x, 1.0) + offset;
+                float dist2 = 1.0 - distance(uv.x, 0.0) + offset;
+    
+                float y = cos(uv.x * PI + time * 0.001 * rand) * dist1 * dist2 * str * 0.5 + 0.5;
+                float a1 = smoothstep(y - linewidth, y, uv.y);
+                float a2 = smoothstep(y + linewidth, y, uv.y);
+                
+                lines.a += a1 * a2;
+            }
 
-            gl_FragColor = color;
+            // vec4 color = vec4(vec3(1), a1 * a2);
+
+            gl_FragColor = lines;
         }
     `
 }
