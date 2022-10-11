@@ -29,8 +29,6 @@ export default {
 
             vec4 lines = vec4(vec3(1), 0.0);
 
-            float rand1 = 0.0;
-
             for(float i = 0.0; i < 16.0; i += 1.0){
                 float rand = random(i) * 0.5 + 0.5;
                 float str = (random(i) * 0.5 + 0.5) * 2.0 + 0.5;
