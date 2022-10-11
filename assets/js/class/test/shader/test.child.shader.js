@@ -12,8 +12,9 @@ export default {
 
         const float PI = ${Math.PI};
         const float strength = 2.0;
-        const float minLinewidth = 0.0075;
-        const float maxLinewidth = 0.015;
+        const float minLinewidth = 0.005;
+        const float maxLinewidth = 0.0075;
+        const float opacity = 0.6;
 
         float random(float t){
             return (cos(t) + cos(t * 1.3 + 1.3) + cos(t * 1.4 + 1.4)) / 3.0;   
@@ -28,6 +29,8 @@ export default {
 
             vec4 lines = vec4(vec3(1), 0.0);
 
+            float rand1 = 0.0;
+
             for(float i = 0.0; i < 16.0; i += 1.0){
                 float rand = random(i) * 0.5 + 0.5;
                 float str = (random(i) * 0.5 + 0.5) * 2.0 + 0.5;
@@ -41,7 +44,7 @@ export default {
                 float a1 = smoothstep(y - linewidth, y, uv.y);
                 float a2 = smoothstep(y + linewidth, y, uv.y);
                 
-                lines.a += a1 * a2;
+                lines.a += a1 * a2 * opacity;
             }
 
             // vec4 color = vec4(vec3(1), a1 * a2);
