@@ -21,7 +21,7 @@ export default {
         }
 
 
-        // ${ShaderMethod.snoise3D()}
+        ${ShaderMethod.snoise3D()}
         
         void main(){
             vec2 coord = gl_FragCoord.xy;
@@ -29,7 +29,18 @@ export default {
 
             vec4 lines = vec4(vec3(1), 0.0);
 
+            // float n1 = snoise3D(vec3(uv * 0.1, time * 0.02)) * 0.5 + 0.5;
+            // float n2 = snoise3D(vec3(uv * 0.2, time * 0.02)) * 0.5 + 0.5;
+
+            // float scale = 0.25;
+            // float theta = 1.0 * PI * n1;
+            // float phi = acos(2.0 * n2 - 1.0);
+            // float velX = cos(theta) * sin(phi) * scale;
+            // float velY = sin(theta) * sin(phi) * scale;
+            // float velZ = cos(phi) * scale;
+
             for(float i = 0.0; i < 16.0; i += 1.0){
+                // float rand = velY;
                 float rand = random(i) * 0.5 + 0.5;
                 float str = (random(i) * 0.5 + 0.5) * 2.0 + 0.5;
                 float offset = random(i * time * 0.1) * 0.075;
