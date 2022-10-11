@@ -31,13 +31,13 @@ export default {
             for(float i = 0.0; i < 16.0; i += 1.0){
                 float rand = random(i) * 0.5 + 0.5;
                 float str = (random(i) * 0.5 + 0.5) * 2.0 + 0.5;
-                float offset = random(i * time * 0.0001) * 0.075;
+                float offset = random(i * time * 0.1) * 0.075;
                 float linewidth = mix(minLinewidth, maxLinewidth, rand);
 
                 float dist1 = 1.0 - distance(uv.x, 1.0) + offset;
                 float dist2 = 1.0 - distance(uv.x, 0.0) + offset;
     
-                float y = cos(uv.x * PI + time * 0.001 * rand) * dist1 * dist2 * str * 0.5 + 0.5 + offset;
+                float y = cos(uv.x * PI + time * rand) * dist1 * dist2 * str * 0.5 + 0.5 + offset;
                 float a1 = smoothstep(y - linewidth, y, uv.y);
                 float a2 = smoothstep(y + linewidth, y, uv.y);
                 

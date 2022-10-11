@@ -44,6 +44,6 @@ export default class{
     animate(){
         const time = window.performance.now()
 
-        this.object.setUniform('time', time)
+        this.object.setUniform('time', time / 1000)
     }
 }
