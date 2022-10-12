@@ -32,17 +32,16 @@ export default {
             for(float i = 0.0; i < 16.0; i += 1.0){
                 float rand = random(i * 0.1) * 0.5 + 0.5;
                 float str = (random(i * 0.1) * 0.5 + 0.5) * 1.0 + 1.0;
-                // float offset = cos(i * PI * 0.1 + time) * 0.02;
                 float offset = random(i * 0.1) * 0.05;
                 float linewidth = mix(minLinewidth, maxLinewidth, rand);
 
                 float dist1 = 1.0 - distance(uv.x, 1.0) + offset;
                 float dist2 = 1.0 - distance(uv.x, 0.0) + offset;
 
-                // float theta = uv.x * PI + time * 0.3 * (i * 0.1);
-                // float phi = uv.x * PI * 2.0 + time * 0.3 * (i * 0.2);
-                float theta = uv.x * PI + time * 0.3;
-                float phi = uv.x * PI * 2.0 + time * 0.3;
+                // float theta = uv.x * PI + time * 0.3 * (i * 0.01);
+                // float phi = uv.x * PI * 2.0 + time * 0.3 * (i * 0.02);
+                float theta = uv.x * PI + time * 0.4;
+                float phi = uv.x * PI * 2.0 + time * 0.4;
                 float ry = sin(theta) * sin(phi);
     
                 // float y = (cos(uv.x * PI + time * rand) * (dist1 * dist2 * str)) * 0.5 + 0.5 + offset; 
