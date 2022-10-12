@@ -14,7 +14,7 @@ export default {
         const float strength = 2.0;
         const float minLinewidth = 0.01;
         const float maxLinewidth = 0.02;
-        const float opacity = 0.25;
+        const float opacity = 0.2;
 
         float random(float t){
             return (cos(t) + cos(t * 1.3 + 1.3) + cos(t * 1.4 + 1.4)) / 3.0;   
