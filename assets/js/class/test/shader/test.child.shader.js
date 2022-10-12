@@ -43,6 +43,7 @@ export default {
                 // float rand = velY;
                 float rand = random(i) * 0.5 + 0.5;
                 float str = (random(i) * 0.5 + 0.5) * 1.0 + 1.0;
+                // float offset = cos(i * PI * 0.1 + time) * 0.02;
                 float offset = random(i * time * 0.1) * 0.05;
                 float linewidth = mix(minLinewidth, maxLinewidth, rand);
 
