@@ -30,8 +30,8 @@ export default {
             vec4 lines = vec4(vec3(1), 0.0);
 
             for(float i = 0.0; i < 16.0; i += 1.0){
-                float rand = random(i * 0.1) * 0.5 + 0.5;
-                float str = (random(i * 0.1) * 0.5 + 0.5) * 1.0 + 1.0;
+                float rand = random(i * 0.1 + time) * 0.5 + 0.5;
+                float str = rand * 1.0 + 1.0;
                 float offset = random(i * 0.1) * 0.05;
                 float linewidth = mix(minLinewidth, maxLinewidth, rand);
 
